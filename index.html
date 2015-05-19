@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://yourdomain.com/">
   <link rel="alternate" type="application/rss+xml" title="Sem compromisso com a realidade" href="http://yourdomain.com/feed.xml" />
+
+  <script src=http://code.jquery.com/jquery-2.1.4.min.js></script>
 </head>
 
 
@@ -72,6 +74,31 @@
   </ul>
 
   <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+  <div class="post-list">
+    
+
+  <h1 class="page-heading">On Delicious</h1>
+
+  <div id="delicious"></div>
+  <script>
+    function renderDeliciousLinks(items) {
+      var output = "<ul>";
+      for (var i = 0,l = items.length; i < l; i++) {
+        output += '<li> <a href="' + items[i].u + '" title="Tags: ' + (items[i].t == "" ? "" : items[i].t.join(', ')) + '">' +    items[i].d +  '</a></li>';
+      }
+      output += "</ul>";
+      $('#delicious').html(output);
+    }
+  </script>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/fhisamoto?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+
+  <p>
+    <a href="http://delicious.com/fhisamoto">My Delicious Bookmarks &raquo;</a>
+  </p>
+
+
+  </div>
 
 </div>
 
