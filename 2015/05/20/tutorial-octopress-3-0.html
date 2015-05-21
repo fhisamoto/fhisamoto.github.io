@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sem compromisso com a realidade</title>
-  <meta name="description" content="Wenn ist das Nunstruck git und Slotermeyer? Ja!... Beiherhund das Oder die Flipperwaldt gersput!
-">
+  <title>Tutorial Octopress 3.0</title>
+  <meta name="description" content="Instalação do Octopress 3.0 from scratch">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://fhisamoto.com/">
+  <link rel="canonical" href="http://fhisamoto.com/2015/05/20/tutorial-octopress-3-0.html">
   <link rel="alternate" type="application/rss+xml" title="Sem compromisso com a realidade" href="http://fhisamoto.com/feed.xml" />
 
   <script src=http://code.jquery.com/jquery-2.1.4.min.js></script>
@@ -57,56 +56,58 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">Tutorial Octopress 3.0</h1>
+    <p class="post-meta">May 20, 2015</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 20, 2015</span>
+  <article class="post-content">
+    <h1 id="instalao-do-octopress-30-from-scratch">Instalação do Octopress 3.0 from scratch</h1>
 
-        <h2>
-          <a class="post-link" href="/2015/05/20/tutorial-octopress-3-0.html">Tutorial Octopress 3.0</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 18, 2015</span>
+<p>Ou seja, estou assumindo que você não irá migrar de um Octopress 2.0.</p>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2015/05/18/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<h2 id="install-octopress">Install Octopress</h2>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>Crie um Gemfile com as gems:</p>
 
-  <div class="post-list">
-    
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
 
-  <h1 class="page-heading">On Delicious</h1>
+<span class="n">gem</span> <span class="s1">&#39;octopress&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 3.0&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;octopress-deploy&#39;</span></code></pre></div>
 
-  <div id="delicious"></div>
-  <script>
-    function renderDeliciousLinks(items) {
-      var output = "<ul>";
-      for (var i = 0,l = items.length; i < l; i++) {
-        output += '<li> <a href="' + items[i].u + '" title="Tags: ' + (items[i].t == "" ? "" : items[i].t.join(', ')) + '">' +    items[i].d +  '</a></li>';
-      }
-      output += "</ul>";
-      $('#delicious').html(output);
-    }
-  </script>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/fhisamoto?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+<p>eu prefiro deixar as gems e os binários no mesmo diretório, por isso</p>
 
-  <p>
-    <a href="http://delicious.com/fhisamoto">My Delicious Bookmarks &raquo;</a>
-  </p>
+<p><code>$ bundle install --binstubs --path=vendor</code></p>
 
+<p>para criar um novo blog</p>
 
-  </div>
+<p><code>$ bundle exec octopress new &lt;new_blog&gt;</code></p>
+
+<h3 id="novo-blog-octopress">Novo blog octopress</h3>
+
+<p>A partir do diretório <code>new_blog</code>, então</p>
+
+<p><code>$ cd new_blog</code></p>
+
+<p>estará a estrutura do blog octopress 3.0 criada.</p>
+
+<h3 id="deployment-no-github">Deployment no github</h3>
+
+<p>Criar um repositório no github com o nome <strong>seu_usuario.github.io</strong>. Então execute</p>
+
+<p><code>$ bundle exec octopress deploy init git &lt;url&gt;</code>,</p>
+
+<p>exemplo:</p>
+
+<p><code>$ bundle exec octopress deploy init git git@github.com:usuario/usuario.github.io.git</code></p>
+
+<p>então, para fazer um deploy</p>
+
+<p><code>$ bundle exec octopress deploy</code></p>
+
+  </article>
 
 </div>
 
