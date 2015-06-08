@@ -106,13 +106,15 @@
 
   <div id="delicious"></div>
   <script>
-    function renderDeliciousLinks(items) {
-      var output = "<ul>";
-      for (var i = 0,l = items.length; i < l; i++) {
-        output += '<li> <a href="' + items[i].u + '" title="Tags: ' + (items[i].t == "" ? "" : items[i].t.join(', ')) + '">' +    items[i].d +  '</a></li>';
-      }
-      output += "</ul>";
-      $('#delicious').html(output);
+    var renderDeliciousLinks = function(links) {
+      var ul = $('<ul></ul>');
+      links.forEach(function(link) {
+        var li = $('<li><a href="' + link.u + '">' + link.d + '</a></li>');
+        var tags = link.t.map(function(tag){ return '<span class="label">' + tag + '</span>'; });
+        li.append('<p>'+ tags.join(" ") +'</p>');
+        li.appendTo(ul);
+      });
+      $('#delicious').append(ul);
     }
   </script>
   <script type="text/javascript" src="http://feeds.delicious.com/v2/json/fhisamoto?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>

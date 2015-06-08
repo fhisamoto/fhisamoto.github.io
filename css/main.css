@@ -143,6 +143,22 @@ pre {
     fill: #828282; }
 
 /**
+ * Labels
+ */
+.label {
+  display: inline;
+  background-color: #777;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  box-sizing: border-box;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em; }
+
+/**
  * Site header
  */
 .site-header {
