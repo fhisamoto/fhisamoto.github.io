@@ -161,15 +161,18 @@ pre {
 /**
  * thumbnail
  */
-.images-list .photo {
-  max-width: 40%; }
-.images-list .info {
-  max-width: 60%; }
+.images-list {
+  background-color: #eee; }
+  .images-list .photo {
+    max-width: 40%; }
+  .images-list .info {
+    max-width: 60%; }
 
 .thumbnail {
   display: block;
   padding: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
