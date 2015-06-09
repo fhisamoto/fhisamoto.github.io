@@ -164,9 +164,9 @@ pre {
 .images-list {
   background-color: #eee; }
   .images-list .photo {
-    max-width: 40%; }
+    max-width: 33%; }
   .images-list .info {
-    max-width: 60%; }
+    max-width: 67%; }
 
 .thumbnail {
   display: block;
