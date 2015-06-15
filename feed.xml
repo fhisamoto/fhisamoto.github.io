@@ -1,14 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sem compromisso com a realidade</title>
+    <title></title>
     <description>Wenn ist das Nunstruck git und Slotermeyer? Ja!... Beiherhund das Oder die Flipperwaldt gersput!
 </description>
     <link>http://fhisamoto.com/</link>
     <atom:link href="http://fhisamoto.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Jun 2015 21:00:34 -0300</pubDate>
-    <lastBuildDate>Mon, 08 Jun 2015 21:00:34 -0300</lastBuildDate>
+    <pubDate>Sun, 14 Jun 2015 21:03:46 -0300</pubDate>
+    <lastBuildDate>Sun, 14 Jun 2015 21:03:46 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Workers</title>
+        <description>&lt;style&gt;
+	.measurement {
+		width: 30%;
+	}
+	
+	.app {
+		width: 65%;
+	}
+	
+	.btn {
+		display: inline-block;
+		padding: 6px 12px;
+		margin-bottom: 0;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.42857143;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-image: none;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+
+	.worker-queue {
+		min-height: 20px;
+		margin: 5px;
+		padding: 5px;
+		border: 1px solid white;
+		background-color: #f5f5f5;
+		font-family: monospace;
+		font-size: 11px;
+		list-style-type: none;
+		border-radius: 4px;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	}
+	
+	.job {
+  		margin-right: 1px;
+  		margin-top: 1px;
+		color: #eee;
+  		display: inline-block;
+  		background-color: #57f269;
+	}
+&lt;/style&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+	&lt;div class=&quot;col measurement&quot;&gt;
+		&lt;button id=&quot;create-jobs&quot; class=&quot;btn&quot; type=&quot;button&quot;&gt;Create Jobs&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;col app&quot;&gt;
+		&lt;div id=&quot;workers&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+$(function() {
+	var Measurement = function() {
+	  this.num = 0;
+	  this.totalTime = 0;
+	  this.totalTime2 = 0;
+	  
+	  this.inc = function(num, totalTime, totalTime2) {
+	    this.num += num;
+	    this.totalTime += totalTime;
+	    this.totalTime2 += totalTime2;
+	  }
+	
+	  this.average = function() {
+	    if (this.num &gt; 0) {
+	      return this.totalTime / this.num;
+	    }
+	    return 0;
+	  };
+	
+	  this.standardDeviation = function() {
+	    var avg = this.average();
+	    if (avg &gt; 0) {
+	      return Math.sqrt(this.totalTime2 / this.num - (avg * avg));
+	    }
+	    return 0;
+	  };
+	}
+	
+    var Job = function() {
+      this.domElement = $(&#39;&lt;li class=&quot;job&quot; data-request-time=&quot;&#39; + this.requestTime + &#39;&quot;&gt;.&lt;/li&gt;&#39;);
+      this.requestTime = (new Date()).getTime();
+      this.endTime = null;
+      this.totalTime = function() {
+        return this.endTime - this.requestTime;
+      }
+	  
+      var gaussRandom = function () {
+         var u = 2 * Math.random() - 1;
+         var v = 2 * Math.random() - 1;
+         var r = u * u + v * v;
+         if (r == 0 || r &gt; 1) return gaussRandom();
+         var c = Math.sqrt(-2 * Math.log(r) / r);
+         return u * c;
+      }
+	  
+      this.processTime = function() {
+        return (gaussRandom() * 50.0) + 400.0;
+      }
+	  
+      this.execute = function() {
+        var job = this;
+        return setTimeout(function() {
+          job.endTime = (new Date()).getTime();
+          job.domElement.parent().trigger(&#39;job-finished&#39;, { job: job });
+        }, this.processTime());
+      }
+      return this;
+    };
+	
+    var Worker = function() {
+      var worker = { &#39;domElement&#39;: $(&#39;&lt;ul class=&quot;worker-queue&quot;&gt;&lt;/ul&gt;&#39;) };
+      var jobs = [];
+      worker.domElement.on(&#39;job-added&#39;, function(e, params) {
+        if (jobs.length === 1) {
+          var job = params[&#39;job&#39;];
+          job.execute();
+        }
+      });
+	  
+      worker.domElement.on(&#39;job-finished&#39;, function(e, params) {
+        var job = jobs.shift();
+        job.domElement.remove();
+        var totalTime = job.totalTime();
+        var latency = new Measurement();
+        latency.inc(1, totalTime, totalTime * totalTime);
+        $(document).trigger(&#39;summarize&#39;, { latency: latency });
+        if (jobs.length &gt; 0) {
+          jobs[0].execute();
+        }
+      });
+	  
+      worker.addJob = function(job) {
+        jobs.push(job);
+        worker.domElement.append(job.domElement);
+        worker.domElement.trigger(&#39;job-added&#39;, { job: job });
+      }
+      return worker;
+    }
+	
+    var WorkerPool = function(options) {
+      var MAX_WORKERS = 10;
+      this.domElement = $(&#39;#workers&#39;);
+      this.workers = [];
+      
+	  for (var i = 0; i &lt; MAX_WORKERS; i++) {
+        var worker = new Worker();
+        this.workers.push(worker);
+        this.domElement.append(worker.domElement);
+      }
+	  
+      var RoundRobinStrategy = function(workers) {
+        var i = 0;
+        var inc = function() {
+          i = (i &lt; workers.length - 1) ? i + 1: 0;
+        }
+      
+	    this.getWorker = function() {
+          var worker = workers[i];
+          inc();
+          return worker;
+        }
+        return this;
+      };
+      
+	  this.strategy = new RoundRobinStrategy(this.workers);
+      this.addJob = function() {
+        this.strategy.getWorker().addJob(new Job());
+      };
+      return this;
+    };
+    
+	var pool = new WorkerPool();
+    var latency = new Measurement();
+	
+    $(document).on(&#39;summarize&#39;, function(event, params) {
+      var l = params[&#39;latency&#39;];
+      latency.inc(l.num, l.totalTime, l.totalTime2);
+//	  $(&#39;#latency-mean&#39;).html(latency.average().toFixed(0));
+//      $(&#39;#latency-std&#39;).html(latency.standardDeviation().toFixed(0));
+//      $(&#39;#num-jobs&#39;).html(latency.num);
+    })
+	
+    $(&#39;#create-jobs&#39;).on(&#39;click&#39;, function() {
+      var CONCURRENT_JOBS = 400;
+      for(var i = 0; i &lt; CONCURRENT_JOBS; i++) {
+        pool.addJob();
+      }
+    });
+ });
+&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 14 Jun 2015 21:02:40 -0300</pubDate>
+        <link>http://fhisamoto.com/2015/06/14/workers.html</link>
+        <guid isPermaLink="true">http://fhisamoto.com/2015/06/14/workers.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Tutorial Octopress 3.0</title>
