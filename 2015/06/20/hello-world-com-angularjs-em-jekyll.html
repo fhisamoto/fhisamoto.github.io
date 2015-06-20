@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sem compromisso com a realidade</title>
-  <meta name="description" content="Wenn ist das Nunstruck git und Slotermeyer? Ja!... Beiherhund das Oder die Flipperwaldt gersput!
-">
+  <title>Hello world com AngularJS em jekyll</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://fhisamoto.com/">
+  <link rel="canonical" href="http://fhisamoto.com/2015/06/20/hello-world-com-angularjs-em-jekyll.html">
   <link rel="alternate" type="application/rss+xml" title="Sem compromisso com a realidade" href="http://fhisamoto.com/feed.xml" />
 
   <script src=http://code.jquery.com/jquery-2.1.4.min.js></script>
@@ -77,74 +76,43 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">Hello world com AngularJS em jekyll</h1>
+    <p class="post-meta">Jun 20, 2015</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jun 20, 2015</span>
+  <article class="post-content">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 
-        <h2>
-          <a class="post-link" href="/2015/06/20/hello-world-com-angularjs-em-jekyll.html">Hello world com AngularJS em jekyll</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 14, 2015</span>
+<script>
+    var app = angular.module('angularDemo', []);
 
-        <h2>
-          <a class="post-link" href="/2015/06/14/workers.html">Workers</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 20, 2015</span>
+    app.config(function($interpolateProvider){
+        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+    });
 
-        <h2>
-          <a class="post-link" href="/2015/05/20/tutorial-octopress-3-0.html">Tutorial Octopress 3.0</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 18, 2015</span>
+    app.controller('MainCtrl', function($scope){
+        $scope.hello = 'Hello world!';
+    });
+</script>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2015/05/18/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<script src="https://gist.github.com/fhisamoto/66235c6c7f057e0ba829.js"></script>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-  <div class="post-list">
-    
-
-  <h1 class="page-heading">On Delicious</h1>
-
-  <div id="delicious"></div>
-  <script>
-    var renderDeliciousLinks = function(links) {
-      var ul = $('<ul></ul>');
-      links.forEach(function(link) {
-        var li = $('<li><a href="' + link.u + '">' + link.d + '</a></li>');
-        var tags = link.t.map(function(tag){ return '<span class="label">' + tag + '</span>'; });
-        li.append('<p>'+ tags.join(" ") +'</p>');
-        li.appendTo(ul);
-      });
-      $('#delicious').append(ul);
+<style>
+    .ng-container {
+        width: 200px;
+        padding: 20px;
+        text-align: center;
     }
-  </script>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/fhisamoto?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+</style>
 
-  <p>
-    <a href="http://delicious.com/fhisamoto">My Delicious Bookmarks &raquo;</a>
-  </p>
+<div ng-app="angularDemo" ng-controller="MainCtrl" class="ng-container">
+    <h1>{[{hello}]}</h1>
+</div>
 
-
-  </div>
+  </article>
 
 </div>
 
