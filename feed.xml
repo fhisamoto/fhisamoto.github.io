@@ -6,9 +6,24 @@
 </description>
     <link>http://fhisamoto.com/</link>
     <atom:link href="http://fhisamoto.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Jun 2015 01:15:53 -0300</pubDate>
-    <lastBuildDate>Sat, 20 Jun 2015 01:15:53 -0300</lastBuildDate>
+    <pubDate>Tue, 23 Jun 2015 19:35:57 -0300</pubDate>
+    <lastBuildDate>Tue, 23 Jun 2015 19:35:57 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Toptal Application</title>
+        <description>&lt;p&gt;From an early age, I was always fascinated by computers and eletronic games. I remember as a child’s fascination with the &lt;em&gt;atari&lt;/em&gt;, &lt;em&gt;genesis&lt;/em&gt;, &lt;em&gt;super nintendos&lt;/em&gt; and &lt;em&gt;arcades&lt;/em&gt;. I discovered at that time, in an &lt;em&gt;XT&lt;/em&gt; with &lt;em&gt;Basic&lt;/em&gt;, how machines could be programmed to do amazing things. These are the oldest memories that made me work with computing.&lt;/p&gt;
+
+&lt;p&gt;I lived my whole life in São Paulo, a huge city of over &lt;em&gt;11 million&lt;/em&gt; people, counting the metropolitan area are more than &lt;em&gt;20 million&lt;/em&gt; people. It is a bustling city, diverse, with exciting nightlife, excellent restaurants and culture, but it is also chaotic, violent and heavy traffic. Since I had not lived in a different city - attended the University of São Paulo, and thus did not need to move to another city to go to college - I realized for the first time after 35 years, a different way of living when I moved to a much smaller city, Limeira.&lt;/p&gt;
+
+&lt;p&gt;Limeira is a city with about 400,000 people, is located less than 200 km away from Sao Paulo. I came to this city invited by a friend to lead a development team struggling to meet the growing demand by customers; to enhance the quality of the code to increase the speed of the team in the long term. Living in a smaller town is nice, I soon began to appreciate the things like having time for lunch at home, doing things with less hurry and have more free time. With my departure from the company I found myself at a crossroads: return to chaotic life at São Paulo, or try a different experience in different places? Seeking freedom to work anywhere I decided to apply to Toptal.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 23 Jun 2015 19:23:43 -0300</pubDate>
+        <link>http://fhisamoto.com/2015/06/23/toptal-application.html</link>
+        <guid isPermaLink="true">http://fhisamoto.com/2015/06/23/toptal-application.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Hello world com AngularJS em jekyll</title>
