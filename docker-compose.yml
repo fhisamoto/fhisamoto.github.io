@@ -29,4 +29,4 @@ publish:
   volumes:
     - .:/app
     - ./deploy_keys:/root/.ssh
-  command: bundle exec octopress deploy
+  command: sh -c "git config --global user.email 'fhisamoto@gmail.com' && bundle exec octopress deploy"
