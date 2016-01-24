@@ -1,0 +1,32 @@
+gems:
+  image: ruby
+  volumes:
+    - /usr/local/bundle
+  command: /bin/sh
+
+ruby: &ruby
+  image: ruby
+  volumes_from:
+    - gems
+  volumes:
+    - .:/app
+  working_dir: /app
+
+s:
+  <<: *ruby
+  ports:
+    - "4000:4000"
+  environment:
+    - MENTOS_TIMEOUT=30
+  command: bundle exec jekyll s -H 0.0.0.0 -w -D --force_polling
+
+c:
+  <<: *ruby
+  command: /bin/bash
+
+publish:
+  <<: *ruby
+  volumes:
+    - .:/app
+    - ./deploy_keys:/root/.ssh
+  command: bundle exec octopress deploy

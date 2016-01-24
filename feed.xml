@@ -6,9 +6,46 @@
 </description>
     <link>http://fhisamoto.com/</link>
     <atom:link href="http://fhisamoto.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Oct 2015 23:45:31 -0200</pubDate>
-    <lastBuildDate>Thu, 22 Oct 2015 23:45:31 -0200</lastBuildDate>
+    <pubDate>Sun, 24 Jan 2016 20:24:02 +0000</pubDate>
+    <lastBuildDate>Sun, 24 Jan 2016 20:24:02 +0000</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Hello world com AngularJS em jekyll</title>
+        <description>&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    var app = angular.module(&#39;angularDemo&#39;, []);
+
+    app.config(function($interpolateProvider){
+        $interpolateProvider.startSymbol(&#39;{[{&#39;).endSymbol(&#39;}]}&#39;);
+    });
+
+    app.controller(&#39;MainCtrl&#39;, function($scope){
+        $scope.hello = &#39;Hello world!&#39;;
+    });
+&lt;/script&gt;
+
+&lt;script src=&quot;https://gist.github.com/fhisamoto/66235c6c7f057e0ba829.js&quot;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+    .ng-container {
+        width: 200px;
+        padding: 20px;
+        text-align: center;
+    }
+&lt;/style&gt;
+
+&lt;div ng-app=&quot;angularDemo&quot; ng-controller=&quot;MainCtrl&quot; class=&quot;ng-container&quot;&gt;
+    &lt;h1&gt;{[{hello}]}&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 20 Jun 2015 04:14:45 +0000</pubDate>
+        <link>http://fhisamoto.com/2015/06/20/hello-world-com-angularjs-em-jekyll.html</link>
+        <guid isPermaLink="true">http://fhisamoto.com/2015/06/20/hello-world-com-angularjs-em-jekyll.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Workers</title>
@@ -217,9 +254,9 @@ $(function() {
 &lt;/script&gt;
 
 </description>
-        <pubDate>Sun, 14 Jun 2015 21:02:40 -0300</pubDate>
-        <link>http://fhisamoto.com/2015/06/14/workers.html</link>
-        <guid isPermaLink="true">http://fhisamoto.com/2015/06/14/workers.html</guid>
+        <pubDate>Mon, 15 Jun 2015 00:02:40 +0000</pubDate>
+        <link>http://fhisamoto.com/2015/06/15/workers.html</link>
+        <guid isPermaLink="true">http://fhisamoto.com/2015/06/15/workers.html</guid>
         
         
       </item>
@@ -269,9 +306,9 @@ $(function() {
 
 &lt;p&gt;&lt;code&gt;$ bundle exec octopress deploy&lt;/code&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 20 May 2015 21:42:31 -0300</pubDate>
-        <link>http://fhisamoto.com/2015/05/20/tutorial-octopress-3-0.html</link>
-        <guid isPermaLink="true">http://fhisamoto.com/2015/05/20/tutorial-octopress-3-0.html</guid>
+        <pubDate>Thu, 21 May 2015 00:42:31 +0000</pubDate>
+        <link>http://fhisamoto.com/2015/05/21/tutorial-octopress-3-0.html</link>
+        <guid isPermaLink="true">http://fhisamoto.com/2015/05/21/tutorial-octopress-3-0.html</guid>
         
         
       </item>
@@ -293,7 +330,7 @@ $(function() {
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 18 May 2015 19:00:18 -0300</pubDate>
+        <pubDate>Mon, 18 May 2015 22:00:18 +0000</pubDate>
         <link>http://fhisamoto.com/jekyll/update/2015/05/18/welcome-to-jekyll.html</link>
         <guid isPermaLink="true">http://fhisamoto.com/jekyll/update/2015/05/18/welcome-to-jekyll.html</guid>
         
